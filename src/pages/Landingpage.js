@@ -82,7 +82,7 @@ const LandingPage = () => {
 
       {/* Page Content */}
       <Header>Welcome to EcoScope</Header>
-      <SubHeader>Your Ecosystem, Optimized</SubHeader>
+      <SubHeader>Your EcosystemOptimized</SubHeader>
 
       {/* Buttons */}
      
