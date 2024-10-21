@@ -46,6 +46,10 @@ input {
   z-index: 5;
 }
 
+.forgot_password{
+  color: #fff;
+}
+
 form {
   display: flex;
   align-items: center;
@@ -159,6 +163,12 @@ form.sign-in-form {
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
+}
+
+.btn1:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .btn1:hover {
