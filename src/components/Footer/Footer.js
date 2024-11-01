@@ -13,18 +13,16 @@ const Footer = () => {
                 <div className="footerrow">
                     <div className="footercol">
                         <img src={logo} className="footer_logo" />
-                        <p className="footer_about">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore harum molestias nesciunt,
-                            doloremque magni aspernatur iste blanditiis, fugiat quaerat accusamus ut, vero tempore.
-                            Fugiat, illum!
+                        <p className="footer_about">Empowering forest conservation through cutting-edge image analytics. Our mission is to provide accurate tree enumeration, green cover estimation, and species identification to support sustainable development and forest management. Together, let's optimize our ecosystems for a greener future.
                         </p>
                     </div>
                     <div className="footercol">
                         <h5>Office <div className="bottom_line"><span></span></div></h5>
-                        <p>2841 Romines Mill Road</p>
-                        <p>Plano</p>
-                        <p>Texas, ZIP 75074, United States</p>
+                        <p>Jagatpura</p>
+                        <p>Jaipur</p>
+                        <p>Rajasthan, PIN 302017, India</p>
                         <p className="footer_email">ecoscopeofficial@gmail.com</p>
-                        <h6>+1 - 2145958195</h6>
+                        <h6>+91 - 9145839254</h6>
                     </div>
                     <div className="footercol">
                         <h5>Links <div className="bottom_line"><span></span></div></h5>

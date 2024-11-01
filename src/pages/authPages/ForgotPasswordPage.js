@@ -18,7 +18,7 @@ const ForgotPasswordPage = () => {
     setEmail('');
     try {
       // Send a POST request to backend for password reset
-      const response = await axios.post('http://localhost:8000/api/auth/send-reset-link', { email });
+      const response = await axios.post('https://ecoscope-backend.onrender.com/api/auth/send-reset-link', { email });
       if (response.status === 200) {
         toast.success('Password reset link has been sent to your email');
       }

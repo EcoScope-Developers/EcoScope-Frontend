@@ -48,6 +48,12 @@ input {
 
 .forgot_password{
   color: #fff;
+  text-decoration: none;
+}
+
+.forgot_password:hover{
+  color: lightgreen;
+  text-decoration: none;
 }
 
 form {
@@ -147,6 +153,7 @@ form.sign-in-form {
 .social-icon:hover {
   color: lightgreen;
   border-color: lightgreen;
+  text-decoration: none;
 }
 
 .btn1 {
