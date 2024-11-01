@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #2d6a4f !important; 
+    /* background: linear-gradient(to right, #2e7d32, #66bb6a) !important; */
+  }
+  .navbar-brand {
+    font-weight: bold !important;
+    color: #edf6f9 !important;
+  }
+  .navbar-brand:hover{
+    color: orange !important;
+  }
+  .navbar-nav .nav-link {
+    color: #edf6f9 !important; 
+  }
+  .navbar-nav .nav-link:hover {
+    color: #ffdd99 !important; 
+  }
+  .navbar-toggler {
+    border-color: #ffffff !important;
+  }
+  
+  

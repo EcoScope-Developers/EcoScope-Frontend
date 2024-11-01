@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/authPages/resetPasswordPage';
+import Test from './pages/test';
 
 function App() {
   return (
@@ -17,8 +18,7 @@ function App() {
         <Route path="/resend-verification" element={<ResendVerificationPage/>} />
         <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
         <Route path="/reset-password" element={<ResetPasswordPage/>} />
-
-        <Route path="/test" element={<Footer/>} />
+        <Route path="/test" element={<Test/>} />
       </Routes>
     </Router>
   );

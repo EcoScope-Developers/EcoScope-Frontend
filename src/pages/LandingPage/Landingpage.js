@@ -17,7 +17,7 @@ const LandingPage = () => {
       <p className="subheader">Your Ecosystem Optimized</p>
 
       {/* Buttons */}
-      <a className="login-button" href="/login">Login / Signup</a>
+      <a className="landing-login-button" href="/login">Login / Signup</a>
 
       <footer className="landing_footer">© {year} EcoScope Developers</footer>
     </div>

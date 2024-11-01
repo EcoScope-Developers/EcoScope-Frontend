@@ -35,7 +35,7 @@ function LoginSignup() {
     setIsLoading(true); // Start loading
   
     try {
-      const response = await fetch('http://localhost:8000/api/auth/register', {
+      const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ function LoginSignup() {
     setIsLoading(true); // Start loading
   
     try {
-      const response = await fetch('http://localhost:8000/api/auth/login', {
+      const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ function LoginSignup() {
               <Link className="forgot_password" to="/forgot-password">Forgot Password</Link>
               <p className="social-text">Or Sign in with social platforms</p>
               <div className="social-media">
-                <a href="#" className="social-icon">
+                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
                   <i className="fab fa-google" />
                 </a>
                 <a href="#" className="social-icon">
@@ -190,7 +190,7 @@ function LoginSignup() {
               <input type="submit" className="btn1" disabled={isLoading} />
               <p className="social-text">Or Sign up with social platforms</p>
               <div className="social-media">
-                <a href="#" className="social-icon">
+                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
                   <i className="fab fa-google" />
                 </a>
                 <a href="#" className="social-icon">
