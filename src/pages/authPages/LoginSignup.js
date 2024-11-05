@@ -202,9 +202,9 @@ function LoginSignup() {
         </div>
         <div className="panels-container">
           <div className="panel left-panel">
-            <div className="content">
+            <div className="content new_signup">
               <h3>New here?</h3>
-              <p>
+              <p className="new_signup">
                 Begin the journey to empower forest conservation through automated tree enumeration and insightful analytics.
               </p>
               <button className="btn1 transparent" id="sign-up-btn" onClick={handleSignUpClick}>
