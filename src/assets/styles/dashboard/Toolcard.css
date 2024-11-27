@@ -1,0 +1,31 @@
+.toolCard {
+    background-color: #f1f8e9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .toolCard h3 {
+    color: #2e7d32;
+  }
+  
+  .toolCard p {
+    color: #6d6d6d;
+    margin: 10px 0;
+  }
+  
+  .viewButton {
+    padding: 8px 16px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .viewButton:hover {
+    background-color: #1b5e20;
+  }
+  

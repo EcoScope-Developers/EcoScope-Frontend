@@ -1,0 +1,19 @@
+.dashboard {
+    display: flex;
+    background-color: #e8f5e9;
+    min-height: 100vh;
+  }
+  
+  .main {
+    flex: 1;
+    padding: 20px;
+    background: url('../../images/auth/background.jpg') no-repeat center;
+    background-size: cover;
+  }
+  
+  .toolCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
