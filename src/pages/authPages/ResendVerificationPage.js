@@ -16,6 +16,7 @@ const ResendVerificationPage = () => {
         try {
             const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/resend-verification-link', {
                 method: 'POST',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 },

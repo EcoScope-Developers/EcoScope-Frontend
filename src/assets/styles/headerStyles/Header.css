@@ -1,22 +1,54 @@
 .navbar {
-    background-color: #2d6a4f !important; 
-    /* background: linear-gradient(to right, #2e7d32, #66bb6a) !important; */
-  }
-  .navbar-brand {
-    font-weight: bold !important;
-    color: #edf6f9 !important;
-  }
-  .navbar-brand:hover{
-    color: orange !important;
-  }
-  .navbar-nav .nav-link {
-    color: #edf6f9 !important; 
-  }
-  .navbar-nav .nav-link:hover {
-    color: #ffdd99 !important; 
-  }
-  .navbar-toggler {
-    border-color: #ffffff !important;
-  }
-  
-  
+  background-color: #2d6a4f !important;
+}
+
+.navbar-brand {
+  font-weight: bold !important;
+  color: #edf6f9 !important;
+}
+
+.navbar-brand:hover {
+  color: orange !important;
+}
+
+.navbar-nav .nav-link {
+  color: #edf6f9 !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffdd99 !important;
+}
+
+.navbar-toggler {
+  border-color: #ffffff !important;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  border: 2px solid #edf6f9;
+}
+
+.text-white {
+  color: #edf6f9 !important;
+}
+
+/* Restrict the width of the dropdown menu */
+.dropdown-menu {
+  width: 100px;
+  min-width: 0;
+}
+
+/* Add some padding to the dropdown items */
+.dropdown-menu .dropdown-item {
+  padding-left: 10px; 
+  padding-right: 10px; 
+  width: 100%; 
+  text-align: center;
+  margin-left: -5px;
+}
+
