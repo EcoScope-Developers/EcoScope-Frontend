@@ -14,8 +14,9 @@ const ResendVerificationPage = () => {
         e.preventDefault();
         setIsLoading(true); // Show loader if needed
         try {
-            const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/resend-verification-link', {
+            const response = await fetch('http://localhost:8000/api/auth/resend-verification-link', {
                 method: 'POST',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 },

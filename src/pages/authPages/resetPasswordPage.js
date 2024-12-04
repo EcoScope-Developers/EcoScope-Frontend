@@ -23,7 +23,7 @@ const ResetPasswordPage = () => {
 
     try {
       const token = searchParams.get("token"); // Get token from URL query params
-      const res = await axios.post("https://ecoscope-backend.onrender.com/api/auth/reset-password", { newPassword, confirmPassword }, {
+      const res = await axios.post("http://localhost:8000/api/auth/reset-password", { newPassword, confirmPassword }, {
         params: { token },
       });
 

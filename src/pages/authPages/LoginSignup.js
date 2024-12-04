@@ -35,8 +35,9 @@ function LoginSignup() {
     setIsLoading(true); // Start loading
   
     try {
-      const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/register', {
+      const response = await fetch('http://localhost:8000/api/auth/register', {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json'
         },
@@ -71,8 +72,9 @@ function LoginSignup() {
     setIsLoading(true); // Start loading
   
     try {
-      const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/login', {
+      const response = await fetch('http://localhost:8000/api/auth/login', {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json'
         },
@@ -82,7 +84,10 @@ function LoginSignup() {
         })
       });
       const data = await response.json();
+      const userId = data.userId;
+      
       if (response.ok) {
+        localStorage.setItem('userId', userId);
         toast.success(data.message || 'Login successful!');
         // Clear form fields
         setFormData({
@@ -142,7 +147,7 @@ function LoginSignup() {
               <Link className="forgot_password" to="/forgot-password">Forgot Password</Link>
               <p className="social-text">Or Sign in with social platforms</p>
               <div className="social-media">
-                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
+                <a href="http://localhost:8000/api/auth/google" className="social-icon">
                   <i className="fab fa-google" />
                 </a>
                 <a href="#" className="social-icon">
@@ -190,7 +195,7 @@ function LoginSignup() {
               <input type="submit" className="btn1" disabled={isLoading} />
               <p className="social-text">Or Sign up with social platforms</p>
               <div className="social-media">
-                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
+                <a href="http://localhost:8000/api/auth/google" className="social-icon">
                   <i className="fab fa-google" />
                 </a>
                 <a href="#" className="social-icon">
