@@ -8,11 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/authPages/resetPasswordPage';
 import Test from './pages/test';
+import AboutUs from './pages/LandingPage/AboutUs';
 
 function App() {
   return (
     <Router>
       <Routes>
+      <Route path="/AboutUs" element={<AboutUs/>} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginSignup/>} />
         <Route path="/resend-verification" element={<ResendVerificationPage/>} />

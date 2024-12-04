@@ -1,0 +1,76 @@
+/* General Styling */
+.about-us {
+  font-family: "Arial", sans-serif;
+  color: #2f4f4f;
+  background: linear-gradient(to bottom, #d4efdf, #f0f8ff);
+  padding: 20px;
+}
+
+/* About Section */
+.about-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-section h1 {
+  color: #004d00;
+  font-size: 2.5em;
+}
+
+.about-section p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Team Section */
+.team-section {
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2em;
+  color: #004d00;
+  margin-bottom: 20px;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.team-member {
+  background: #f8f9fa;
+  border: 2px solid #c8e6c9;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.team-member h3 {
+  margin: 10px 0;
+  color: #2e7d32;
+}
+
+.team-member p {
+  color: #555;
+  font-style: italic;
+}
