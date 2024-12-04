@@ -9,7 +9,7 @@ const Header = () => {
         avatar: defaultAvatar, // Default avatar
     });
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulating user login status
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulating user login status
 
     useEffect(() => {
         // Fetch userId from localStorage
@@ -17,6 +17,7 @@ const Header = () => {
         
         // If userId exists, fetch user details
         if (userId) {
+            setIsLoggedIn(true);
             fetch(`http://localhost:8000/api/fetch/fetch-user-by-userid?userId=${userId}`)
                 .then(response => response.json())
                 .then(data => {
