@@ -18,7 +18,7 @@ const Header = () => {
         // If userId exists, fetch user details
         if (userId) {
             setIsLoggedIn(true);
-            fetch(`http://localhost:8000/api/fetch/fetch-user-by-userid?userId=${userId}`)
+            fetch(`https://ecoscope-backend.onrender.com/api/fetch/fetch-user-by-userid?userId=${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.user) {
