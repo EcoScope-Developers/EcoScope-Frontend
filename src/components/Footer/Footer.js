@@ -28,7 +28,7 @@ const Footer = () => {
                         <h5>Links <div className="bottom_line"><span></span></div></h5>
                         <ul>
                             <li><a href="">HOME</a></li>
-                            <li><a href="">ABOUT</a></li>
+                            <li><a href="/about">ABOUT</a></li>
                             <li><a href="">SERVICE</a></li>
                             <li><a href="">CONTACT US</a></li>
                         </ul>

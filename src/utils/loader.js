@@ -53,7 +53,8 @@ const styles = {
         position: 'fixed',
         top: 0,
         left: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: for a semi-transparent background
+        // backgroundColor: 'rgba(255, 255, 255, 0.8)', 
+        backgroundColor: '#ffffff', 
         zIndex: 9999 // Ensure the loader appears on top
     },
     content: {
