@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 // Mock data for team members
 const teamMembers = [
-  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: '/src/assets/images/.png' },
+  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: '/tarun.jpeg' },
   { name: 'Tushar kumar sahu', role: 'Fullstack Developer', image: '/tushar.jpeg' },
   { name: 'Shreya Gupta', role: 'Machine learning Developer', image: '/shreya.png' },
   { name: 'Tanishk Gupta', role: 'Data Analyst', image: '/tanishk.jpeg' },
@@ -11,9 +11,9 @@ const teamMembers = [
 
 // Mock data for reviews
 const reviews = [
-  { text: 'This platform is a game-changer for green initiatives!', reviewer: 'Alice' },
-  { text: 'I love the way it simplifies environmental analysis.', reviewer: 'Bob' },
-  { text: 'The team is incredibly supportive and innovative.', reviewer: 'Charlie' },
+  { text: 'This platform is a game-changer for green initiatives!', reviewer: 'Rajesh' },
+  { text: 'I love the way it simplifies environmental analysis.', reviewer: 'Riya' },
+  { text: 'The team is incredibly supportive and innovative.', reviewer: 'Shreya' },
 ];
 
 // Keyframes for animations
