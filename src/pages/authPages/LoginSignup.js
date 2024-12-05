@@ -37,6 +37,7 @@ function LoginSignup() {
     try {
       const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/register', {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json'
         },
@@ -73,6 +74,7 @@ function LoginSignup() {
     try {
       const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/login', {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json'
         },
@@ -82,7 +84,10 @@ function LoginSignup() {
         })
       });
       const data = await response.json();
+      const userId = data.userId;
+      
       if (response.ok) {
+        localStorage.setItem('userId', userId);
         toast.success(data.message || 'Login successful!');
         // Clear form fields
         setFormData({
