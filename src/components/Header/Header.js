@@ -92,7 +92,7 @@ const Header = () => {
                             />
                             <span className="ml-2 text-white">{userDetails.username}</span>
                             <div className="dropdown-menu" aria-labelledby="userDropdown">
-                                <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                                <button className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
                             </div>
                         </div>
                     ) : (

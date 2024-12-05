@@ -50,5 +50,22 @@
   width: 100%; 
   text-align: center;
   margin-left: -5px;
+  color: inherit;
 }
 
+.logout-btn {
+  background-color: transparent;
+  color: #edf6f9;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Remove blue background on hover */
+.logout-btn:hover, 
+.logout-btn:focus {
+  background-color:transparent !important; 
+  color: #2d6a4f;
+  border: none;
+  outline: none;
+}
