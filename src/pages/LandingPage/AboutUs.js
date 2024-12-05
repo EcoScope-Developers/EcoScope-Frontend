@@ -3,10 +3,10 @@ import styled, { keyframes } from 'styled-components';
 
 // Mock data for team members
 const teamMembers = [
-  { name: 'John Doe', role: 'Frontend Developer', image: '/images/john.png' },
-  { name: 'Jane Smith', role: 'Backend Developer', image: '/images/jane.png' },
-  { name: 'Alex Johnson', role: 'UI/UX Designer', image: '/images/alex.png' },
-  { name: 'Emily Davis', role: 'Project Manager', image: '/images/emily.png' },
+  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: '/src/assets/images/.png' },
+  { name: 'Tushar kumar sahu', role: 'Fullstack Developer', image: '/tushar.jpeg' },
+  { name: 'Shreya Gupta', role: 'Machine learning Developer', image: '/shreya.png' },
+  { name: 'Tanishk Gupta', role: 'Data Analyst', image: '/tanishk.jpeg' },
 ];
 
 // Mock data for reviews
