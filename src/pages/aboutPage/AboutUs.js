@@ -1,12 +1,17 @@
 import React, { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import tarun from "../../assets/images/team/tarun.jpeg"
+import tushar from "../../assets/images/team/tushar.jpeg"
+import shreya from "../../assets/images/team/shreya.png"
+import tanishk from "../../assets/images/team/tanishk.jpeg"
+
 // Mock data for team members
 const teamMembers = [
-  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: '/tarun.jpeg' },
-  { name: 'Tushar kumar sahu', role: 'Fullstack Developer', image: '/tushar.jpeg' },
-  { name: 'Shreya Gupta', role: 'Machine learning Developer', image: '/shreya.png' },
-  { name: 'Tanishk Gupta', role: 'Data Analyst', image: '/tanishk.jpeg' },
+  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: tarun },
+  { name: 'Tushar kumar sahu', role: 'Fullstack Developer', image: tushar },
+  { name: 'Shreya Gupta', role: 'Machine learning Developer', image: shreya },
+  { name: 'Tanishk Gupta', role: 'Data Analyst', image: tanishk },
 ];
 
 // Mock data for reviews

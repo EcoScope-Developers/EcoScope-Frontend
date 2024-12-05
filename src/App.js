@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/authPages/resetPasswordPage';
 import Test from './pages/test';
-import AboutUs from './pages/LandingPage/AboutUs';
+import AboutUs from './pages/aboutPage/AboutUs';
 import HelpPage from './pages/helppage/HelpPage';
 import Header from './components/Header/Header';
 
