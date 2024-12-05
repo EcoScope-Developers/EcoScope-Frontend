@@ -1,0 +1,73 @@
+.verification-dark {
+    background-color: #1e1e2e;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 10% auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .verification-dark h2 {
+    font-size: 2rem;
+    color: #00adb5;
+    margin-bottom: 20px;
+  }
+  
+  .verification-dark p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #ccc;
+  }
+  
+  .input-field-resend {
+    margin-bottom: 20px;
+  }
+  
+  .input-field-resend input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background-color: #2a2a40;
+    color: white;
+    outline: none;
+  }
+  
+  .input-field-resend input::placeholder {
+    color: #888;
+  }
+  
+  .dark-btn {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s ease-in-out;
+  }
+  
+  .dark-btn:hover {
+    background-color: #019696;
+  }
+  
+  .dark-btn:active {
+    background-color: #007b7a; /* Darker shade on press */
+    transform: scale(0.95); /* Simulate press by reducing size slightly */
+  }
+  
+  .dark-btn:disabled {
+    background-color: #4d4d4d;
+    cursor: not-allowed;
+  }
+  
+  .verification_input{
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
