@@ -27,6 +27,12 @@ const slideUp = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
+const moveBall = keyframes`
+  0% { border-color: #00ff00; }
+  50% { border-color: #004d00; }
+  100% { border-color: #00ff00; }
+`;
+
 // Styled-components
 const Container = styled.div`
   padding: 20px;
@@ -72,6 +78,10 @@ const TeamSection = styled.div`
   gap: 40px;
   justify-items: center;
   animation: ${slideUp} 1.5s ease-out;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Circle = styled.div`
@@ -84,11 +94,24 @@ const Circle = styled.div`
   justify-content: center;
   overflow: hidden;
   border: 8px solid #00ff00;
+  position: relative;
   transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.2);
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.4);
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    animation: ${moveBall} 1.5s infinite ease;
   }
 `;
 

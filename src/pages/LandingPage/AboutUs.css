@@ -74,3 +74,113 @@
   color: #555;
   font-style: italic;
 }
+
+/* Circle and Blue Water Flowing Border Animation */
+.circle {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 8px solid #00ff00;
+  transition: transform 0.3s ease;
+}
+
+.circle:hover {
+  transform: scale(1.2);
+  box-shadow: 0 10px 20px rgba(0, 255, 0, 0.4);
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border-radius: 50%;
+  background: linear-gradient(45deg, #00f, #00d4ff); /* Blue water gradient */
+  background-size: 200% 200%;
+  animation: waterFlow 3s infinite linear;
+}
+
+@keyframes waterFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Extra Content Section */
+.extra-content {
+  margin-top: 100px;
+  padding: 20px;
+  background: #111;
+  color: #a0ffa0;
+}
+
+.reviews-section {
+  margin-top: 50px;
+  background-color: #111;
+  padding: 40px 20px;
+  text-align: center;
+  color: #a0ffa0;
+}
+
+.review-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #00ff00;
+}
+
+.review-box {
+  background-color: #1a1a1a;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3);
+}
+
+.review-text {
+  color: #a0ffa0;
+  font-style: italic;
+}
+
+.reviewer {
+  display: block;
+  font-weight: bold;
+  color: #00ff00;
+  margin-top: 10px;
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    width: 80%;
+  }
+
+  .about-section h1 {
+    font-size: 2em;
+  }
+
+  .about-section p {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+
+  .review-box {
+    max-width: 100%;
+  }
+}
+}
