@@ -5,7 +5,7 @@ const HelpPage = () => {
   return (
     <div className="help-container">
       <header className="help-header">
-        <h1>Welcome to TreeSense Imaging</h1>
+        <h1>Welcome to EcoScope</h1>
         <p>Your guide to exploring and protecting the environment using technology.</p>
       </header>
 
@@ -21,7 +21,7 @@ const HelpPage = () => {
       </section>
 
       <section className="help-section features">
-        <h2>Features of TreeSense Imaging</h2>
+        <h2>Features of EcoScope</h2>
         <div className="feature-grid">
           <div className="feature-card">
             <h3>🌍 Real-Time Data</h3>
@@ -41,14 +41,14 @@ const HelpPage = () => {
       <section className="help-section">
         <h2>Why Choose Us?</h2>
         <p>
-          At TreeSense Imaging, we bridge the gap between technology and
+          At EcoScope, we bridge the gap between technology and
           environmental conservation. Our mission is to empower individuals,
           organizations, and governments with actionable insights for a
           sustainable future.
         </p>
         <div className="testimonial">
           <p>
-            "TreeSense has transformed how we monitor and protect green zones.
+            "EcoScope has transformed how we monitor and protect green zones.
             A game-changer for environmental enthusiasts!"
           </p>
           <span>- Environmental Analyst</span>
