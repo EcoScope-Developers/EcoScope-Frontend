@@ -9,7 +9,7 @@ import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/authPages/resetPasswordPage';
 import Test from './pages/test';
 import AboutUs from './pages/LandingPage/AboutUs';
-
+import HelpPage from './pages/helppage/HelpPage';
 function App() {
   return (
     <Router>
@@ -21,6 +21,9 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
         <Route path="/reset-password" element={<ResetPasswordPage/>} />
         <Route path="/test" element={<Test/>} />
+        <Route path="/about" element={<AboutUs/>} />
+        <Route path="/help" element={<HelpPage />} />
+
       </Routes>
     </Router>
   );
