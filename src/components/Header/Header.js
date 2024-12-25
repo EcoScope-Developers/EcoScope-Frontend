@@ -26,6 +26,7 @@ const Header = () => {
             fetch(`https://ecoscope-backend.onrender.com/api/fetch/fetch-user-by-userid?userId=${userId}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log("User Data:", data.user.avatar);
                     if (data.user) {
                         // Update state with fetched username and avatar
                         setUserDetails({

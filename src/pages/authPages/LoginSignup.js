@@ -27,13 +27,13 @@ function LoginSignup() {
       if (popup.closed) {
         clearInterval(popupChecker);
         setLoading(false);
-        toast.error('Login was canceled');
+        toast.error('Login was canceled.');
       }
     }, 500);
 
     // Listen for messages from the popup window
     window.addEventListener('message', (event) => {
-      if (event.origin !== 'https://projectdev2114.azurewebsites.net') return;
+      if (event.origin !== 'https://ecoscope-backend.onrender.com') return;
 
       const responseData = event.data;
       console.log(responseData);
@@ -43,10 +43,10 @@ function LoginSignup() {
       if (responseData.status) {
         console.log('User Data:', responseData.user);
         localStorage.setItem('userId', responseData.user._id);
-        localStorage.setItem('user', JSON.stringify(responseData.user));
+        // localStorage.setItem('user', JSON.stringify(responseData.user));
 
         toast.success('Login Successful!');
-        window.location.href = '/';
+        window.location.href = '/test';
         setLoading(false);
       } else {
         setLoading(false);
@@ -196,8 +196,9 @@ function LoginSignup() {
               <p className="social-text">Or Sign in with social platforms</p>
               <div className="social-media">
                 {/* <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon"> */}
-                  <i className="fab fa-google" onClick={() => onSuccess()}/>
-                {/* </a> */}
+                <a href="#" className="social-icon" onClick={() => onSuccess()}>
+                  <i className="fab fa-google"/>
+                </a>
                 <a href="#" className="social-icon">
                   <i className="fab fa-github" />
                 </a>
