@@ -7,6 +7,7 @@ import Loader from "../../utils/loader";
 function LoginSignup() {
   const navigate = useNavigate(); // Get the navigate function
 
+  const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // State to manage loading
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [formData, setFormData] = useState({
@@ -14,6 +15,53 @@ function LoginSignup() {
     password: '',
     username: ''
   });
+
+  const onSuccess = async (response) => {
+    setLoading(true);
+
+    // Open the Google authentication URL in a new window
+    const popup = window.open('https://ecoscope-backend.onrender.com/api/auth/google', 'GoogleLogin', 'width=600,height=600');
+
+    // Polling interval to check if popup is closed
+    const popupChecker = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(popupChecker);
+        setLoading(false);
+        toast.error('Login was canceled');
+      }
+    }, 500);
+
+    // Listen for messages from the popup window
+    window.addEventListener('message', (event) => {
+      if (event.origin !== 'https://projectdev2114.azurewebsites.net') return;
+
+      const responseData = event.data;
+      console.log(responseData);
+
+      clearInterval(popupChecker); // Stop checking once we receive a message
+
+      if (responseData.status) {
+        console.log('User Data:', responseData.user);
+        localStorage.setItem('userId', responseData.user._id);
+        localStorage.setItem('user', JSON.stringify(responseData.user));
+
+        toast.success('Login Successful!');
+        window.location.href = '/';
+        setLoading(false);
+      } else {
+        setLoading(false);
+        toast.error('Login failed. Please try again.');
+      }
+    });
+  };
+
+  const onFailure = (error) => {
+    //console.error('Login Failed:', error);
+    console.error('Google login failed:', error);
+    toast.error('Google login failed. Please try again.');
+
+    // toast.error("Login failed. Please try again.");
+  };
 
   const handleSignUpClick = () => {
     setIsSignUpMode(true);
@@ -147,9 +195,9 @@ function LoginSignup() {
               <Link className="forgot_password" to="/forgot-password">Forgot Password</Link>
               <p className="social-text">Or Sign in with social platforms</p>
               <div className="social-media">
-                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
-                  <i className="fab fa-google" />
-                </a>
+                {/* <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon"> */}
+                  <i className="fab fa-google" onClick={() => onSuccess()}/>
+                {/* </a> */}
                 <a href="#" className="social-icon">
                   <i className="fab fa-github" />
                 </a>
