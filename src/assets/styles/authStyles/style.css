@@ -122,7 +122,7 @@ form.sign-in-form {
 }
 
 .social-text {
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   font-size: 1rem;
   color: #00ff00;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -338,7 +338,7 @@ form.sign-in-form {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 2.5rem 8%;
+    padding: 1.5rem 8%;
     grid-column: 1 / 2;
   }
 

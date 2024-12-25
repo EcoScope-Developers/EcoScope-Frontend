@@ -41,7 +41,7 @@ function LoginSignup() {
       clearInterval(popupChecker); // Stop checking once we receive a message
 
       if (responseData.status) {
-        console.log('User Data:', responseData.user);
+        // console.log('User Data:', responseData.user);
         localStorage.setItem('userId', responseData.user._id);
         // localStorage.setItem('user', JSON.stringify(responseData.user));
 
