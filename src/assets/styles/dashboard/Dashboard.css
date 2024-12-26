@@ -22,3 +22,9 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
+@media (max-width: 768px) {
+  .dashboard-content{
+    margin-left: 0px;
+  }
+}

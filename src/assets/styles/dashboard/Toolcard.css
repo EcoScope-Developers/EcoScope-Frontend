@@ -8,6 +8,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease-in-out;
+
 }
 
 .toolCard:hover {
@@ -44,6 +45,6 @@
   .toolCard {
     width: 100%; /* Full width for smaller screens */
     max-width: 90%; /* Limit the max-width to avoid overflow */
-    margin: 10px auto; /* Center the card on smaller screens */
+    margin: 10px auto; /*Center the card on smaller screens*/
   }
 }

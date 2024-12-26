@@ -1,10 +1,10 @@
 /* Sidebar styles */
 .icon-strip {
-  position: fixed;
+  /* position: relative; */
   /* top: 56px; */
   left: 0;
   width: 50px; /* Default width when collapsed */
-  height: calc(100% - 56px); /* Full height from below navbar */
+  height: calc(100%); /* Full height from below navbar */
   background-color: #2e7d32;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,8 @@
   transition: width 0.3s ease-in-out;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  margin-right: 200px;
+  /* margin-right: 200px; */
+  /* border: 2px solid red; */
 }
 
 .icon-strip.expanded {
@@ -67,12 +68,6 @@
 .icon-strip.expanded + .dashboard-content {
   margin-left: 150px; 
   width: calc(100% - 150px);
-}
-
-.dashboard-wrapper{
-  /* background: url("../../images/auth/background.jpg") no-repeat center;
-  background-size: cover; */
-  /* border: 5px solid red; */
 }
 
 /* .footer {
