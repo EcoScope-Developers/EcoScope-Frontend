@@ -1,0 +1,19 @@
+// src/pages/Dashboard.js
+import React from 'react';
+import Sidebar from '../../components/Dashboard/Sidebar';
+import ToolCard from '../../components/Dashboard/Toolcard';
+import '../../assets/styles/dashboard/Dashboard.css';
+
+const Dashboard = () => {
+  return (
+    <div className="dashboard">
+      <Sidebar />
+      {/* <div className="main"> */}
+        {/* <Header title="EcoScope Dashboard" /> */}
+        
+      {/* </div> */}
+    </div>
+  );
+};
+
+export default Dashboard;

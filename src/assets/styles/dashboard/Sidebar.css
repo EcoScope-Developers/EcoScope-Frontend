@@ -1,0 +1,88 @@
+/* Sidebar styles */
+.icon-strip {
+  position: fixed;
+  /* top: 56px; */
+  left: 0;
+  width: 50px; /* Default width when collapsed */
+  height: calc(100% - 56px); /* Full height from below navbar */
+  background-color: #2e7d32;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  padding-top: 10px;
+  padding-left: 10px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  margin-right: 200px;
+}
+
+.icon-strip.expanded {
+  width: 150px; /* Width when expanded */
+  align-items: flex-start; /* Align items to the left */
+  padding-left: 10px; /* Add padding for the text */
+}
+
+.icon-strip ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: auto; /*Allow vertical scrolling*/
+}
+
+.icon-strip li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.icon-strip .icon {
+  font-size: 24px;
+}
+
+.icon-strip .text {
+  font-size: 16px;
+  color: white;
+}
+
+.hamburger{
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  margin-left: 50px; 
+  width: calc(100% - 50px);
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.icon-strip.expanded + .dashboard-content {
+  margin-left: 150px; 
+  width: calc(100% - 150px);
+}
+
+.dashboard-wrapper{
+  /* background: url("../../images/auth/background.jpg") no-repeat center;
+  background-size: cover; */
+  /* border: 5px solid red; */
+}
+
+/* .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #2e7d32;
+  color: white;
+  text-align: center;
+  line-height: 60px;
+} */

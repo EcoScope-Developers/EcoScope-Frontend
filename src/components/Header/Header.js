@@ -4,122 +4,84 @@ import logo from "../../assets/images/logo/Ecoscope.png";
 import defaultAvatar from "../../assets/images/logo/User.png";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { useNavigate } from 'react-router-dom';
 
-
 const Header = () => {
-    const [userDetails, setUserDetails] = useState({
-        username: '',  // Default username
-        avatar: defaultAvatar, // Default avatar
-    });
+  const [userDetails, setUserDetails] = useState({
+    username: '',  
+    avatar: defaultAvatar, 
+  });
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulating user login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isNavbarExpanded, setIsNavbarExpanded] = useState(false); 
 
-    useEffect(() => {
-        // Fetch userId from localStorage
-        const userId = localStorage.getItem('userId');
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      setIsLoggedIn(true);
+      fetch(`https://ecoscope-backend.onrender.com/api/fetch/fetch-user-by-userid?userId=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.user) {
+            setUserDetails({
+              username: data.user.username,
+              avatar: data.user.avatar || defaultAvatar, 
+            });
+          }
+        })
+        .catch(error => console.error("Error fetching user details:", error));
+    }
+  }, []);
 
-        // If userId exists, fetch user details
-        if (userId) {
-            setIsLoggedIn(true);
-            fetch(`https://ecoscope-backend.onrender.com/api/fetch/fetch-user-by-userid?userId=${userId}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log("User Data:", data.user.avatar);
-                    if (data.user) {
-                        // Update state with fetched username and avatar
-                        setUserDetails({
-                            username: data.user.username,
-                            avatar: data.user.avatar || defaultAvatar, // Use default if no avatar is available
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching user details:", error);
-                });
-        } else {
-            console.log("No userId found in localStorage.");
-        }
-    }, []);
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    setIsLoggedIn(false); 
+    toast.success("Logged out successfully.");
+  };
 
-    const handleLogout = () => {
-        // Clear the localStorage and update login state
-        localStorage.removeItem('userId');
-        setIsLoggedIn(false); // Update the login state to false
+  const navigate = useNavigate();
 
-        // Show a logout success message
-        toast.success("Logged out successfully.");
+  const handleNavbarToggle = () => {
+    setIsNavbarExpanded(!isNavbarExpanded);
+  };
 
-        // setTimeout(() => navigate('/login'), 3000);
-    };
-
-    const navigate = useNavigate();
-
-
-    return (
-        <>
-            <ToastContainer />
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">
-                    <img
-                        src={logo}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top mr-3"
-                        alt="Logo"
-                    />
-                    EcoScope
-                </a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <a className="nav-item nav-link active" href="#">
-                            Home <span className="sr-only">(current)</span>
-                        </a>
-                        <a className="nav-item nav-link" href="#">Features</a>
-                        <a className="nav-item nav-link" href="#">Gallery</a>
-                        <a className="nav-item nav-link" href="/about">About Us</a>
-                        <a className="nav-item nav-link" href="#">Contact</a>
-                        <a className="nav-item nav-link" href="/help">Help</a>
-                    </div>
-                    <div className="ml-auto user-section">
-                        {isLoggedIn ? (
-                            <div className="dropdown d-flex align-items-center">
-                                <img
-                                    src={userDetails.avatar}
-                                    alt="User Avatar"
-                                    className="avatar rounded-circle"
-                                    width="40"
-                                    height="40"
-                                    id="userDropdown"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                />
-                                <span className="ml-2 text-white">{userDetails.username}</span>
-                                <div className="dropdown-menu" aria-labelledby="userDropdown">
-                                    <button className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
-                                </div>
-                            </div>
-                        ) : (
-                            <a className="btn btn-outline-light" href="/login">Login</a>
-                        )}
-                    </div>
+  return (
+    <>
+      <ToastContainer />
+      <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isNavbarExpanded ? 'expanded' : ''}`}>
+        <a className="navbar-brand" href="#">
+          <img src={logo} width="30" height="30" className="d-inline-block align-top mr-3" alt="Logo" />
+          EcoScope
+        </a>
+        <button className="navbar-toggler" type="button" onClick={handleNavbarToggle}>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className={`collapse navbar-collapse ${isNavbarExpanded ? 'show' : ''}`} id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link active" href="#">Home</a>
+            <a className="nav-item nav-link" href="#">Features</a>
+            <a className="nav-item nav-link" href="#">Gallery</a>
+            <a className="nav-item nav-link" href="/about">About Us</a>
+            <a className="nav-item nav-link" href="#">Contact</a>
+            <a className="nav-item nav-link" href="/help">Help</a>
+          </div>
+          <div className="ml-auto user-section">
+            {isLoggedIn ? (
+              <div className="dropdown d-flex align-items-center">
+                <img src={userDetails.avatar} alt="User Avatar" className="avatar rounded-circle" width="40" height="40" />
+                <span className="ml-2 text-white">{userDetails.username}</span>
+                <div className="dropdown-menu">
+                  <button className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
                 </div>
-            </nav>
-        </>
-    );
+              </div>
+            ) : (
+              <a className="btn btn-outline-light" href="/login">Login</a>
+            )}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 };
 
 export default Header;

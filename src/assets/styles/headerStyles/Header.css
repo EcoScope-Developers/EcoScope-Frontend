@@ -1,6 +1,10 @@
 .navbar {
   background-color: #2d6a4f !important;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  position: sticky; /* This makes the navbar sticky */
+  top: 0; /* Sticks the navbar to the top */
+  z-index: 1000; /* Ensures the navbar stays on top of other elements */
+  width: 100%; /* Ensures the navbar spans the full width */
 }
 
 .navbar-brand {
