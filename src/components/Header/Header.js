@@ -63,7 +63,7 @@ const Header = () => {
         </button>
         <div className={`collapse navbar-collapse ${isNavbarExpanded ? 'show' : ''}`} id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#">Home</a>
+            <a className="nav-item nav-link active" href="/home">Home</a>
             <a className="nav-item nav-link" href="#">Features</a>
             <a className="nav-item nav-link" href="#">Gallery</a>
             <a className="nav-item nav-link" href="/about">About Us</a>

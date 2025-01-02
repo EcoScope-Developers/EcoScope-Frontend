@@ -11,6 +11,7 @@ import Test from './pages/test';
 import AboutUs from './pages/aboutPage/AboutUs';
 import HelpPage from './pages/helppage/HelpPage';
 import Header from './components/Header/Header';
+import Dashboard from './pages/dashboard/Dashbord';
 
 import "./App.css"
 
@@ -29,9 +30,11 @@ function Layout() {
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/home" element={<Dashboard />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/help" element={<HelpPage />} />
+
+        <Route path="/test" element={<Test />} />
       </Routes>
       {!hideHeaderFooter && <Footer />}
     </>
