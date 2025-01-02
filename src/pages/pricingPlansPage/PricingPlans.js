@@ -24,7 +24,6 @@ const PricingPlans = () => {
         'Current Weather Information',
         'Tree Species Identifier',
         'Optimal Pathing',
-        'Current Weather Information'
       ],
       icon: 'fa-solid fa-star', 
     },
