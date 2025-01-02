@@ -14,6 +14,7 @@ const Header = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [isNavbarExpanded, setIsNavbarExpanded] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // New state for dropdown
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -45,6 +46,10 @@ const Header = () => {
     setIsNavbarExpanded(!isNavbarExpanded);
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <>
       <ToastContainer />
@@ -67,12 +72,14 @@ const Header = () => {
           </div>
           <div className="ml-auto user-section">
             {isLoggedIn ? (
-              <div className="dropdown d-flex align-items-center">
+              <div className="dropdown d-flex align-items-center" onClick={toggleDropdown}>
                 <img src={userDetails.avatar} alt="User Avatar" className="avatar rounded-circle" width="40" height="40" />
                 <span className="ml-2 text-white">{userDetails.username}</span>
-                <div className="dropdown-menu">
-                  <button className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
-                </div>
+                {isDropdownOpen && (
+                  <div className="dropdown-menu show">
+                    <button className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
+                  </div>
+                )}
               </div>
             ) : (
               <a className="btn btn-outline-light" href="/login">Login</a>
