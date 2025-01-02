@@ -5,7 +5,7 @@ const HelpPage = () => {
   return (
     <div className="help-container">
       <header className="help-header">
-        <h1>Welcome to EcoScope</h1>
+        <h1 className="help_header">Welcome to EcoScope</h1>
         <p>Your guide to exploring and protecting the environment using technology.</p>
       </header>
 

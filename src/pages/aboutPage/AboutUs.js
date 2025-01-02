@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
+import "../../assets/styles/aboutStyles/AboutUs.css"
 
 import tarun from "../../assets/images/team/tarun.jpeg"
 import tushar from "../../assets/images/team/tushar.jpeg"
@@ -188,7 +189,7 @@ const AboutUs = () => {
 
   return (
     <Container>
-      <Title>Welcome to Our Platform</Title>
+      <Title className='about_header'>Welcome to Our Platform</Title>
       <Subtitle>
         Our platform is dedicated to leveraging cutting-edge technology for environmental conservation.
         We provide tools to analyze satellite imagery, count trees, assess green areas, and optimize
