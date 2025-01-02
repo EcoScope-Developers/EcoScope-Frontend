@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "../../assets/styles/dashboard/Sidebar.css";
-import ToolCard from '../../components/Dashboard/Toolcard';
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Home"); // Track active item
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleItemClick = (item) => {
+    setActiveItem(item);
   };
 
   return (
@@ -16,33 +20,25 @@ const Sidebar = () => {
           &#9776;
         </div>
         <ul>
-          <li>
-            <span className="icon">🏠</span>
-            {isSidebarOpen && <span className="text">Home</span>}
-          </li>
-          <li>
-            <span className="icon">🌳</span>
-            {isSidebarOpen && <span className="text">Tree Count</span>}
-          </li>
-          <li>
-            <span className="icon">📊</span>
-            {isSidebarOpen && <span className="text">Green Cover</span>}
-          </li>
-          <li>
-            <span className="icon">🧬</span>
-            {isSidebarOpen && <span className="text">Species</span>}
-          </li>
-          <li>
-            <span className="icon">🛠️</span>
-            {isSidebarOpen && <span className="text">Tools</span>}
-          </li>
-          <li>
-            <span className="icon">📜</span>
-            {isSidebarOpen && <span className="text">History</span>}
-          </li>
+          {[
+            { icon: "🏠", label: "Home" },
+            { icon: "🌳", label: "Tree Count" },
+            { icon: "📊", label: "Green Cover" },
+            { icon: "🧬", label: "Species" },
+            { icon: "🛠️", label: "Tools" },
+            { icon: "📜", label: "History" },
+          ].map((item) => (
+            <li
+              key={item.label}
+              className={activeItem === item.label ? "active" : ""}
+              onClick={() => handleItemClick(item.label)}
+            >
+              <span className="icon">{item.icon}</span>
+              {isSidebarOpen && <span className="text">{item.label}</span>}
+            </li>
+          ))}
         </ul>
       </div>
-      {/* <div className="footer">Footer Content</div> */}
     </div>
   );
 };

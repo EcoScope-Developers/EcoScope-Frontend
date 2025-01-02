@@ -1,9 +1,41 @@
 /* Sidebar styles */
+.icon-strip li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px; /* Rounded corners for better visual effect */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.icon-strip li:hover {
+  background-color: #66bb6a; /* Slightly lighter green for hover effect */
+  transform: scale(1.05); 
+  border-radius: 6px;
+  /* margin:10px */
+}
+
+.icon-strip li.active {
+  background-color: #1b5e20; /* Darker green for active state */
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
+}
+
+/* Optional: Style the text and icon differently when active */
+.icon-strip li.active .text, .icon-strip li.active .icon {
+  color: #ffffff; /* Ensure text and icon contrast with the background */
+}
+
+
 .icon-strip {
   /* position: relative; */
   /* top: 56px; */
   left: 0;
-  width: 50px; /* Default width when collapsed */
+  width: 60px; /* Default width when collapsed */
   height: calc(100%); /* Full height from below navbar */
   background-color: #2e7d32;
   display: flex;
@@ -17,10 +49,11 @@
   transition: all 0.3s ease-in-out;
   /* margin-right: 200px; */
   /* border: 2px solid red; */
+  padding-right: 10px;
 }
 
 .icon-strip.expanded {
-  width: 150px; /* Width when expanded */
+  width: 200px; /* Width when expanded */
   align-items: flex-start; /* Align items to the left */
   padding-left: 10px; /* Add padding for the text */
 }
@@ -30,7 +63,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  overflow-y: auto; /*Allow vertical scrolling*/
+  /* overflow-y: auto; Allow vertical scrolling */
 }
 
 .icon-strip li {
@@ -81,3 +114,4 @@
   text-align: center;
   line-height: 60px;
 } */
+
