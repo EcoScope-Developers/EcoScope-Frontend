@@ -12,6 +12,10 @@
   transition: background-color 0.3s, transform 0.2s;
 }
 
+.icon-strip li a{
+  text-decoration: none;
+}
+
 .icon-strip li:hover {
   background-color: #66bb6a; /* Slightly lighter green for hover effect */
   transform: scale(1.05); 

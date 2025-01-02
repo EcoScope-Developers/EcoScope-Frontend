@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";  // Import Link from react-router-dom
 import "../../assets/styles/dashboard/Sidebar.css";
 
 const Sidebar = () => {
@@ -20,21 +21,24 @@ const Sidebar = () => {
           &#9776;
         </div>
         <ul>
-          {[
-            { icon: "🏠", label: "Home" },
-            { icon: "🌳", label: "Tree Count" },
-            { icon: "📊", label: "Green Cover" },
-            { icon: "🧬", label: "Species" },
-            { icon: "🛠️", label: "Tools" },
-            { icon: "📜", label: "History" },
+          {[ 
+            { icon: "🏠", label: "Home", to: "/home" },
+            { icon: "🌳", label: "Tree Count", to: "/tree-count" },
+            { icon: "📊", label: "Green Cover", to: "/green-cover" },
+            { icon: "🧬", label: "Species", to: "/species" },
+            { icon: "🛠️", label: "Tools", to: "/tools" },
+            { icon: "📜", label: "History", to: "/history" },
+            { icon: "💸", label: "Pricing Plans", to: "/plans" }, 
           ].map((item) => (
             <li
               key={item.label}
               className={activeItem === item.label ? "active" : ""}
               onClick={() => handleItemClick(item.label)}
             >
-              <span className="icon">{item.icon}</span>
-              {isSidebarOpen && <span className="text">{item.label}</span>}
+              <Link to={item.to}> {/* Use Link component for navigation */}
+                <span className="icon">{item.icon}</span>
+                {isSidebarOpen && <span className="text">{item.label}</span>}
+              </Link>
             </li>
           ))}
         </ul>

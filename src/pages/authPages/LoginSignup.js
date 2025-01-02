@@ -46,7 +46,7 @@ function LoginSignup() {
         // localStorage.setItem('user', JSON.stringify(responseData.user));
 
         toast.success('Login Successful!');
-        window.location.href = '/test';
+        window.location.href = '/home';
         setLoading(false);
       } else {
         setLoading(false);
@@ -143,7 +143,7 @@ function LoginSignup() {
           password: '',
           username: ''
         });
-        navigate("/test"); // Redirect to /test after login
+        navigate("/home"); // Redirect to /test after login
       } else {
         toast.error(data.message || 'Login failed');
       }

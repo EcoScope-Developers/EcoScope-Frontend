@@ -1,10 +1,12 @@
 import React from 'react'
-import Dashboard from './dashboard/Dashbord'
+import PricingPlans from './pricingPlansPage/PricingPlans'
+// import Dashboard from './dashboard/Dashbord'
 
 const test = () => {
   return (
     <>
-      <Dashboard />
+      <PricingPlans />
+      {/* <Dashboard /> */}
     </>
 
   )
