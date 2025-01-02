@@ -1,7 +1,6 @@
 // src/pages/Dashboard.js
 import React from 'react';
 import Sidebar from '../../components/Dashboard/Sidebar';
-import ToolCard from '../../components/Dashboard/Toolcard';
 import '../../assets/styles/dashboard/Dashboard.css';
 import DashboardContent from '../../components/Dashboard/DashboardContent';
 
