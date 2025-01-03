@@ -36,6 +36,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('userId');
+    localStorage.removeItem('accessToken');
     setIsLoggedIn(false); 
     toast.success("Logged out successfully.");
   };

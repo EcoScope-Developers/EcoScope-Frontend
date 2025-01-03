@@ -81,7 +81,7 @@ function LoginSignup() {
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Start loading
-  
+
     try {
       const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/register', {
         method: 'POST',
@@ -114,11 +114,11 @@ function LoginSignup() {
       setIsLoading(false); // Stop loading
     }
   };
-  
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Start loading
-  
+
     try {
       const response = await fetch('https://ecoscope-backend.onrender.com/api/auth/login', {
         method: 'POST',
@@ -133,9 +133,10 @@ function LoginSignup() {
       });
       const data = await response.json();
       const userId = data.userId;
-      
+
       if (response.ok) {
         localStorage.setItem('userId', userId);
+        localStorage.setItem('accessToken', data.tokens.accessToken);
         toast.success(data.message || 'Login successful!');
         // Clear form fields
         setFormData({
@@ -153,134 +154,134 @@ function LoginSignup() {
       setIsLoading(false); // Stop loading
     }
   };
-  
+
 
   return (
     <>
-    <ToastContainer />
-        {isLoading ? (
-       <Loader/>
+      <ToastContainer />
+      {isLoading ? (
+        <Loader />
       ) : (
-      
-      <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
-        <div className="forms-container">
-          <div className="signin-signup">
 
-            {/* Sign In Form */}
-            <form className="sign-in-form" onSubmit={handleLoginSubmit}>
-              <h2 className="title">Sign in</h2>
-              <div className="input-field">
-                <i className="fas fa-envelope" />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock" />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <input type="submit" className="btn1 solid" disabled={isLoading} />
-              <Link className="forgot_password" to="/forgot-password">Forgot Password</Link>
-              <p className="social-text">Or Sign in with social platforms</p>
-              <div className="social-media">
-                {/* <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon"> */}
-                <a href="#" className="social-icon" onClick={() => onSuccess()}>
-                  <i className="fab fa-google"/>
-                </a>
-                <a href="#" className="social-icon">
-                  <i className="fab fa-github" />
-                </a>
-              </div>
-            </form>
+        <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
+          <div className="forms-container">
+            <div className="signin-signup">
 
-            {/* Sign Up Form */}
-            <form className="sign-up-form" onSubmit={handleSignUpSubmit}>
-              <h2 className="title">Sign up</h2>
-              <div className="input-field">
-                <i className="fas fa-user" />
-                <input
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-envelope" />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock" />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <input type="submit" className="btn1" disabled={isLoading} />
-              <p className="social-text">Or Sign up with social platforms</p>
-              <div className="social-media">
-                <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
-                  <i className="fab fa-google" />
-                </a>
-                <a href="#" className="social-icon">
-                  <i className="fab fa-github" />
-                </a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content new_signup">
-              <h3>New here?</h3>
-              <p className="new_signup">
-                Begin the journey to empower forest conservation through automated tree enumeration and insightful analytics.
-              </p>
-              <button className="btn1 transparent" id="sign-up-btn" onClick={handleSignUpClick}>
-                Sign up
-              </button>
+              {/* Sign In Form */}
+              <form className="sign-in-form" onSubmit={handleLoginSubmit}>
+                <h2 className="title">Sign in</h2>
+                <div className="input-field">
+                  <i className="fas fa-envelope" />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock" />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <input type="submit" className="btn1 solid" disabled={isLoading} />
+                <Link className="forgot_password" to="/forgot-password">Forgot Password</Link>
+                <p className="social-text">Or Sign in with social platforms</p>
+                <div className="social-media">
+                  {/* <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon"> */}
+                  <a href="#" className="social-icon" onClick={() => onSuccess()}>
+                    <i className="fab fa-google" />
+                  </a>
+                  <a href="#" className="social-icon">
+                    <i className="fab fa-github" />
+                  </a>
+                </div>
+              </form>
+
+              {/* Sign Up Form */}
+              <form className="sign-up-form" onSubmit={handleSignUpSubmit}>
+                <h2 className="title">Sign up</h2>
+                <div className="input-field">
+                  <i className="fas fa-user" />
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-envelope" />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock" />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <input type="submit" className="btn1" disabled={isLoading} />
+                <p className="social-text">Or Sign up with social platforms</p>
+                <div className="social-media">
+                  <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
+                    <i className="fab fa-google" />
+                  </a>
+                  <a href="#" className="social-icon">
+                    <i className="fab fa-github" />
+                  </a>
+                </div>
+              </form>
             </div>
           </div>
-          <div className="panel right-panel">
-            <div className="content">
-              <h3>One of us?</h3>
-              <p>
-                Welcome back! Take another step toward preserving nature and empowering our planet.
-              </p>
-              <button className="btn1 transparent" id="sign-in-btn" onClick={handleSignInClick}>
-                Sign in
-              </button>
+          <div className="panels-container">
+            <div className="panel left-panel">
+              <div className="content new_signup">
+                <h3>New here?</h3>
+                <p className="new_signup">
+                  Begin the journey to empower forest conservation through automated tree enumeration and insightful analytics.
+                </p>
+                <button className="btn1 transparent" id="sign-up-btn" onClick={handleSignUpClick}>
+                  Sign up
+                </button>
+              </div>
+            </div>
+            <div className="panel right-panel">
+              <div className="content">
+                <h3>One of us?</h3>
+                <p>
+                  Welcome back! Take another step toward preserving nature and empowering our planet.
+                </p>
+                <button className="btn1 transparent" id="sign-in-btn" onClick={handleSignInClick}>
+                  Sign in
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       )
-        }
+      }
     </>
   );
 }
