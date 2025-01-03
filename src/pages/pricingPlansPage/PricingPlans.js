@@ -17,8 +17,8 @@ const PricingPlans = () => {
     },
     {
       name: 'Pro',
-      price: '$9.99/month',
-      priceInPaise: 999, // Razorpay expects the amount in paise
+      price: '₹999/year',
+      priceInPaise: 99900, // Razorpay expects the amount in paise
       imageLimit: 7,
       features: [
         'Tree Count',
@@ -31,8 +31,8 @@ const PricingPlans = () => {
     },
     {
       name: 'Premium',
-      price: '$19.99/month',
-      priceInPaise: 1999, // Razorpay expects the amount in paise
+      price: '₹1999/year',
+      priceInPaise: 199900, // Razorpay expects the amount in paise
       imageLimit: 10,
       features: [
         'Tree Count',
@@ -56,7 +56,7 @@ const PricingPlans = () => {
         alert('You need to be logged in to purchase a plan.');
         return;
       }
-  
+
       const response = await fetch('https://ecoscope-backend.onrender.com/api/payment/create-order', {
         method: 'POST',
         headers: {
@@ -68,12 +68,12 @@ const PricingPlans = () => {
       });
       const order = await response.json();
       console.log(order);
-  
+
       if (!order.id) {
         alert('Failed to create order. Please try again.');
         return;
       }
-  
+
       // Initialize Razorpay payment
       const options = {
         key: 'rzp_test_RLZPg3Wne8JW3B', // Replace with your Razorpay key_id
@@ -107,7 +107,7 @@ const PricingPlans = () => {
           color: '#3399cc',
         },
       };
-  
+
       const razorpay = new window.Razorpay(options);
       razorpay.open();
     } catch (error) {
@@ -115,7 +115,6 @@ const PricingPlans = () => {
       alert('Something went wrong. Please try again.');
     }
   };
-  
 
   return (
     <div className="plans-container">
@@ -137,8 +136,9 @@ const PricingPlans = () => {
             <button
               className="purchase-button"
               onClick={() => handlePurchase(plan)}
+              disabled={plan.name === 'Smart'} // Disable the button for the 'Smart' plan
             >
-              Purchase
+              {plan.name === 'Smart' ? 'Free Plan' : 'Purchase'}
             </button>
           </div>
         ))}
