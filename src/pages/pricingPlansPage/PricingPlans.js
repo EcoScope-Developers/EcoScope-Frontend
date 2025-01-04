@@ -49,7 +49,6 @@ const PricingPlans = () => {
 
   const handlePurchase = async (plan) => {
     try {
-      // Create Razorpay order via backend
       const accessToken = localStorage.getItem('accessToken');
       const userId = localStorage.getItem('userId');
       if (!userId) {
@@ -57,59 +56,117 @@ const PricingPlans = () => {
         return;
       }
 
-      const response = await fetch('https://ecoscope-backend.onrender.com/api/payment/create-order', {
-        method: 'POST',
+      // Fetch user details to check the current plan
+      const userDetailsResponse = await fetch(`http://localhost:8000/api/fetch/fetch-user-by-userid?userId=${userId}`, {
+        method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: plan.priceInPaise, currency: 'INR' }),
-        credentials: 'include', // Ensure cookies are sent with the request
+        credentials: 'include',
       });
-      const order = await response.json();
-      console.log(order);
 
-      if (!order.id) {
-        alert('Failed to create order. Please try again.');
+      const userDetails = await userDetailsResponse.json();
+
+      console.log("userDetails.plan", userDetails, "---", "plan.name", plan.name)
+
+      // Check if the user already has the "Smart" plan and is trying to upgrade to it
+      if (userDetails.user.plan === "Smart" && plan.name === "Smart") {
+        alert("You already have the Smart Plan.");
         return;
       }
+      else {
+        // Check if the user has any active plan
+        const activePlanResponse = await fetch(`http://localhost:8000/api/plan/check-user-have-active-plan?userId=${userId}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
+          credentials: 'include',
+        });
 
-      // Initialize Razorpay payment
-      const options = {
-        key: 'rzp_test_RLZPg3Wne8JW3B', // Replace with your Razorpay key_id
-        amount: plan.priceInPaise,
-        currency: 'INR',
-        name: 'EcoScope',
-        description: `${plan.name} Plan`,
-        order_id: order.id,
-        handler: async (response) => {
-          console.log(response);
-          // Update user's plan information in the database
-          await fetch(`http://localhost:8000/api/payment/update-user-plan?userId=${userId}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              payment_id: response.razorpay_payment_id,
-              plan: plan.name,
-            }),
-            credentials: 'include', // Send cookies with the request
-          });
-          alert(`Payment successful! Your plan has been updated to ${plan.name} plan.`);
-        },
-        prefill: {
-          name: 'John Doe', // Prefill user's details
-          email: 'johndoe@example.com',
-          contact: '9999999999',
-        },
-        theme: {
-          color: '#3399cc',
-        },
-      };
+        const activePlanResult = await activePlanResponse.json();
 
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
+        if (activePlanResult.isActivePlan) {
+          const userConfirmed = window.confirm(
+            'You already have an active plan. Do you really want to update the plan?'
+          );
+          if (!userConfirmed) {
+            return; // Exit if the user cancels
+          }
+
+          // Downgrade to "Smart" if confirmed and selected
+          if (plan.name === "Smart") {
+            const downgradeResponse = await fetch(`http://localhost:8000/api/plan/assign-plan?userId=${userId}&planName=Smart`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${accessToken}`,
+              },
+              credentials: 'include',
+            });
+
+            if (downgradeResponse.ok) {
+              alert('Your plan has been downgraded to the Smart Plan.');
+            } else {
+              const errorData = await downgradeResponse.json();
+              alert(`Failed to downgrade plan: ${errorData.error || 'Unknown error'}`);
+            }
+
+            return; // Exit after downgrading
+          }
+        }
+
+        // Proceed to payment for other plans
+        const paymentResponse = await fetch('https://ecoscope-backend.onrender.com/api/payment/create-order', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount: plan.priceInPaise, currency: 'INR' }),
+          credentials: 'include',
+        });
+
+        const order = await paymentResponse.json();
+
+        if (!order.id) {
+          alert('Failed to create order. Please try again.');
+          return;
+        }
+
+        const options = {
+          key: 'rzp_test_RLZPg3Wne8JW3B', // Replace with your Razorpay key_id
+          amount: plan.priceInPaise,
+          currency: 'INR',
+          name: 'EcoScope',
+          description: `${plan.name} Plan`,
+          order_id: order.id,
+          handler: async (response) => {
+            await fetch(`http://localhost:8000/api/payment/update-user-plan?userId=${userId}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                payment_id: response.razorpay_payment_id,
+                plan: plan.name,
+              }),
+              credentials: 'include',
+            });
+            alert(`Payment successful! Your plan has been updated to ${plan.name} plan.`);
+          },
+          prefill: {
+            name: 'John Doe',
+            email: 'johndoe@example.com',
+            contact: '9999999999',
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      }
     } catch (error) {
       console.error(error);
       alert('Something went wrong. Please try again.');
@@ -136,7 +193,7 @@ const PricingPlans = () => {
             <button
               className="purchase-button"
               onClick={() => handlePurchase(plan)}
-              disabled={plan.name === 'Smart'} // Disable the button for the 'Smart' plan
+            // disabled={plan.name === 'Smart'} // Disable the button for the 'Smart' plan
             >
               {plan.name === 'Smart' ? 'Free Plan' : 'Purchase'}
             </button>
