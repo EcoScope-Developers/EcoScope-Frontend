@@ -245,7 +245,7 @@ function LoginSignup() {
                 <input type="submit" className="btn1" disabled={isLoading} />
                 <p className="social-text">Or Sign up with social platforms</p>
                 <div className="social-media">
-                  <a href="https://ecoscope-backend.onrender.com/api/auth/google" className="social-icon">
+                  <a href="#" className="social-icon" onClick={() => onSuccess()}>
                     <i className="fab fa-google" />
                   </a>
                   <a href="#" className="social-icon">
