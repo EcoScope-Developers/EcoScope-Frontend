@@ -13,7 +13,7 @@ const LandingPage = () => {
       </video>
 
       {/* Page Content */}
-      <h1 className="header">Welcome to EcoScope</h1>
+      <h1 className="landing_header">Welcome to EcoScope</h1>
       <p className="subheader">Your Ecosystem Optimized</p>
 
       {/* Buttons */}
