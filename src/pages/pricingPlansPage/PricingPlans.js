@@ -57,7 +57,7 @@ const PricingPlans = () => {
       }
 
       // Fetch user details to check the current plan
-      const userDetailsResponse = await fetch(`http://localhost:8000/api/fetch/fetch-user-by-userid?userId=${userId}`, {
+      const userDetailsResponse = await fetch(`https://ecoscope-backend.onrender.com/api/fetch/fetch-user-by-userid?userId=${userId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -76,7 +76,7 @@ const PricingPlans = () => {
       }
       else {
         // Check if the user has any active plan
-        const activePlanResponse = await fetch(`http://localhost:8000/api/plan/check-user-have-active-plan?userId=${userId}`, {
+        const activePlanResponse = await fetch(`https://ecoscope-backend.onrender.com/api/plan/check-user-have-active-plan?userId=${userId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -96,7 +96,7 @@ const PricingPlans = () => {
 
           // Downgrade to "Smart" if confirmed and selected
           if (plan.name === "Smart") {
-            const downgradeResponse = await fetch(`http://localhost:8000/api/plan/assign-plan?userId=${userId}&planName=Smart`, {
+            const downgradeResponse = await fetch(`https://ecoscope-backend.onrender.com/api/plan/assign-plan?userId=${userId}&planName=Smart`, {
               method: 'POST',
               headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -141,7 +141,7 @@ const PricingPlans = () => {
           description: `${plan.name} Plan`,
           order_id: order.id,
           handler: async (response) => {
-            await fetch(`http://localhost:8000/api/payment/update-user-plan?userId=${userId}`, {
+            await fetch(`https://ecoscope-backend.onrender.com/api/payment/update-user-plan?userId=${userId}`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
