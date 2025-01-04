@@ -52,7 +52,7 @@ const PricingPlans = () => {
       // Create Razorpay order via backend
       const accessToken = localStorage.getItem('accessToken');
       const userId = localStorage.getItem('userId');
-      if (!accessToken) {
+      if (!userId) {
         alert('You need to be logged in to purchase a plan.');
         return;
       }
@@ -85,7 +85,7 @@ const PricingPlans = () => {
         handler: async (response) => {
           console.log(response);
           // Update user's plan information in the database
-          await fetch('http://localhost:8000/api/payment/update-user-plan', {
+          await fetch(`http://localhost:8000/api/payment/update-user-plan?userId=${userId}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ const PricingPlans = () => {
             }),
             credentials: 'include', // Send cookies with the request
           });
-          alert('Payment successful! Your plan has been updated.');
+          alert(`Payment successful! Your plan has been updated to ${plan.name} plan.`);
         },
         prefill: {
           name: 'John Doe', // Prefill user's details
