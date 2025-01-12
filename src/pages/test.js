@@ -1,10 +1,10 @@
 import React from 'react'
-import Dashboard from './dashboard/Dashbord'
+import ProfilePage from './profilePage/ProfilePage'
 
 const test = () => {
   return (
     <>
-      <Dashboard />
+      <ProfilePage/>
     </>
 
   )
