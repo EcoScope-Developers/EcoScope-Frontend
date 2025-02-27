@@ -14,6 +14,11 @@ import Header from './components/Header/Header';
 import Dashboard from './pages/dashboard/Dashbord';
 import PricingPlans from './pages/pricingPlansPage/PricingPlans';
 import NotFoundPage from './pages/errorPage/NotFoundPage';
+import GreenCover from './pages/greencover/greencover.js';
+import TreeCount from './pages/treecount/treecount.js';
+import TreeSpecies from "./pages/treeSpecies/TreeSpecies";
+import OptimalPath from "./pages/optimalPath/OptimalPath";
+import HistoricalData from "./pages/historicalData/HistoricalData";
 
 import "./App.css"
 
@@ -27,6 +32,12 @@ function Layout() {
     <>
       {showHeaderFooter && <Header />}
       <Routes>
+      <Route path="/tree-count" element={<TreeCount />} />
+<Route path="/green-cover" element={<GreenCover />} />
+<Route path="/tree-species" element={<TreeSpecies />} />
+<Route path="/optimal-path" element={<OptimalPath />} />
+<Route path="/historical-data" element={<HistoricalData />} />
+
         <Route path="/" element={<LandingPage />} />
         <Route path="/resend-verification" element={<ResendVerificationPage />} />
         <Route path="/login" element={<LoginSignup />} />
