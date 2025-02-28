@@ -5,7 +5,7 @@ import LoginSignup from './pages/authPages/LoginSignup';
 import ResendVerificationPage from './pages/authPages/ResendVerificationPage';
 import Footer from './components/Footer/Footer';
 import 'react-toastify/dist/ReactToastify.css';
-import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage';
+import ForgotPasswordPage from './pages/authPages/ForgotPasswordPage'; 
 import ResetPasswordPage from './pages/authPages/resetPasswordPage';
 import Test from './pages/test';
 import AboutUs from './pages/aboutPage/AboutUs';
@@ -16,11 +16,17 @@ import PricingPlans from './pages/pricingPlansPage/PricingPlans';
 import NotFoundPage from './pages/errorPage/NotFoundPage';
 import GreenCover from './pages/greencover/greencover.js';
 import TreeCount from './pages/treecount/treecount.js';
-import TreeSpecies from "./pages/treeSpecies/TreeSpecies";
+import TreeSpeciesIdentifier from "./pages/treeSpecies/TreeSpecies.js";  // ✅ Updated
 import OptimalPath from "./pages/optimalPath/OptimalPath";
 import HistoricalData from "./pages/historicalData/HistoricalData";
 
-import "./App.css"
+// ✅ Import result pages
+import GreenCoverResult from "./pages/results/GreenCoverResult"; 
+import OptimalPathResult from "./pages/results/OptimalPathResult";
+import TreeCountResult from "./pages/results/TreeCountResult";
+import TreeSpeciesResult from "./pages/results/TreeSpeciesResult";  // ✅ Added Tree Species Result
+
+import "./App.css";
 
 function Layout() {
   const location = useLocation();
@@ -32,12 +38,20 @@ function Layout() {
     <>
       {showHeaderFooter && <Header />}
       <Routes>
-      <Route path="/tree-count" element={<TreeCount />} />
-<Route path="/green-cover" element={<GreenCover />} />
-<Route path="/tree-species" element={<TreeSpecies />} />
-<Route path="/optimal-path" element={<OptimalPath />} />
-<Route path="/historical-data" element={<HistoricalData />} />
+        {/* ✅ Tool Pages */}
+        <Route path="/tree-count" element={<TreeCount />} />
+        <Route path="/green-cover" element={<GreenCover />} />
+        <Route path="/tree-species" element={<TreeSpeciesIdentifier />} />  {/* ✅ Updated */}
+        <Route path="/optimal-path" element={<OptimalPath />} />
+        <Route path="/historical-data" element={<HistoricalData />} />
 
+        {/* ✅ Result Pages */}
+        <Route path="/green-cover-result" element={<GreenCoverResult />} />
+        <Route path="/optimal-path-result" element={<OptimalPathResult />} />
+        <Route path="/tree-count-result" element={<TreeCountResult />} />
+        <Route path="/tree-species-result" element={<TreeSpeciesResult />} />  {/* ✅ Newly Added */}
+
+        {/* ✅ Existing Pages */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/resend-verification" element={<ResendVerificationPage />} />
         <Route path="/login" element={<LoginSignup />} />
@@ -47,7 +61,6 @@ function Layout() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/help" element={<HelpPage />} />
         <Route path="/plans" element={<PricingPlans />} />
-
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
