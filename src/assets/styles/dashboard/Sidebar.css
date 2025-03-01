@@ -97,9 +97,12 @@
 
 .dashboard-content {
   margin-left: 50px; 
-  width: calc(100% - 50px);
+  /* width: calc(100% - 50px); */
+  /* width: 100vw; */
   padding: 20px;
   transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  display: flex;
+  /* background-color: red; */
 }
 
 .icon-strip.expanded + .dashboard-content {

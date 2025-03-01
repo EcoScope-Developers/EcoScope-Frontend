@@ -67,7 +67,7 @@
 
 .feature-card {
   background-color: #1a1a1a;
-  border: 2px solid #00ff00;
+  /* border: 2px solid #00ff00; */
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -79,9 +79,14 @@
   margin-bottom: 10px;
 }
 
+.feature-card h2 {
+  color: green;
+}
+
 .feature-card p {
   font-size: 1rem;
-  color: #a0ffa0;
+  /* color: #a0ffa0; */
+  
 }
 
 /* Testimonial */
