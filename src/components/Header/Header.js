@@ -15,6 +15,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [isNavbarExpanded, setIsNavbarExpanded] = useState(false); 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // New state for dropdown
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -39,15 +40,20 @@ const Header = () => {
     if (!toast.isActive('logout-toast')) {
       localStorage.removeItem('userId');
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       setIsLoggedIn(false);
       toast.success("Logged out successfully.", {
         toastId: 'logout-toast',
       });
+
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     }
   };
   
 
-  const navigate = useNavigate();
+
 
   const handleNavbarToggle = () => {
     setIsNavbarExpanded(!isNavbarExpanded);

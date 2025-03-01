@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../../assets/styles/profilePageStyles/ProfilePage.css";
 import img from "../../assets/images/logo/User.png";
 import { FaPencilAlt } from 'react-icons/fa';
-// import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState('profile'); // 'profile' or 'empty'
+  const [activeTab, setActiveTab] = useState('profile');
   const [profile, setProfile] = useState({
     profilePicture: '',
     username: '',
@@ -14,6 +14,8 @@ const ProfilePage = () => {
   });
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null); // To track selected image
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -50,16 +52,14 @@ const ProfilePage = () => {
     }
 
     const requestBody = {
-      currentPassword: currentPassword,
-      newPassword: newPassword
+      currentPassword,
+      newPassword
     };
 
     try {
-      const response = await fetch(`http://localhost:8000/api/auth/update-password?userId=${userId}`, {
+      const response = await fetch(`https://ecoscope-backend.onrender.com/api/auth/update-password?userId=${userId}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
       });
 
@@ -68,35 +68,64 @@ const ProfilePage = () => {
       if (response.ok) {
         setCurrentPassword('');
         setNewPassword('');
-        alert("Password updated successfully")
-        // toast.success("Password updated successfully");
+        toast.success("Password updated successfully");
       } else {
-        alert(`Error: ${result.message}`)
-        // toast.error(`Error: ${result.message}`);
+        toast.error(`Error: ${result.message}`);
       }
     } catch (error) {
       console.error('Error updating password:', error);
-      alert('An error occurred. Please try again.')
-      // toast.error('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
+  // Handle file input click
+  const handleEditClick = () => {
+    fileInputRef.current.click();
+  };
+
+  // Handle file selection and update preview
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl); // Store selected image for preview
+    }
+  };
+
+  // Handle saving the profile picture
+  const handleSaveProfilePicture = async () => {
+    if (!selectedImage) return;
+
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID is missing');
+      return;
+    }
+
+    try {
+      // Here, you would typically send the file to the server
+      // For demonstration, we assume success and update UI
+      setProfile(prevProfile => ({
+        ...prevProfile,
+        profilePicture: selectedImage
+      }));
+      setSelectedImage(null); // Reset selected image
+      toast.success("Profile picture updated successfully");
+    } catch (error) {
+      console.error('Error updating profile picture:', error);
+      toast.error('Failed to update profile picture');
     }
   };
 
   return (
     <div className="profile-container">
-      {/* <ToastContainer /> */}
       <h1>My Profile</h1>
       <div className="profile-card">
         <div className="tabs">
-          <button
-            className={`tab ${activeTab === 'profile' ? 'active' : ''}`}
-            onClick={() => setActiveTab('profile')}
-          >
+          <button className={`tab ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')}>
             Profile Details
           </button>
-          <button
-            className={`tab ${activeTab === 'empty' ? 'active' : ''}`}
-            onClick={() => setActiveTab('empty')}
-          >
+          <button className={`tab ${activeTab === 'empty' ? 'active' : ''}`} onClick={() => setActiveTab('empty')}>
             My Images
           </button>
         </div>
@@ -105,37 +134,34 @@ const ProfilePage = () => {
           <div className="profile-details">
             <div className="profile-left-section">
               <div className="profile-picture-wrapper">
-                <img src={profile.profilePicture} alt="Profile" className="profile-picture-square" />
-                <button className="edit-icon-btn">
+                <img src={selectedImage || profile.profilePicture} alt="Profile" className="profile-picture-square" />
+                <button className="edit-icon-btn" onClick={handleEditClick}>
                   <FaPencilAlt />
                 </button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{ display: 'none' }}
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
               </div>
+              {selectedImage && (
+                <button className="save-profile-btn" onClick={handleSaveProfilePicture}>
+                  Save
+                </button>
+              )}
               <div className="input-group">
                 <label>Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  value={profile.username}
-                  disabled
-                />
+                <input type="text" name="username" value={profile.username} disabled />
               </div>
               <div className="input-group">
                 <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={profile.email}
-                  disabled
-                />
+                <input type="email" name="email" value={profile.email} disabled />
               </div>
               <div className="input-group">
                 <label>Plan Name</label>
-                <input
-                  type="text"
-                  name="planName"
-                  value={profile.planName}
-                  disabled
-                />
+                <input type="text" name="planName" value={profile.planName} disabled />
               </div>
             </div>
             <div className="profile-right-section">
@@ -143,33 +169,21 @@ const ProfilePage = () => {
                 <h2>Update Password</h2>
                 <div className="input-group">
                   <label>Current Password</label>
-                  <input
-                    type="password"
-                    name="currentPassword"
-                    value={currentPassword}
-                    onChange={handlePasswordChange}
-                  />
+                  <input type="password" name="currentPassword" value={currentPassword} onChange={handlePasswordChange} />
                 </div>
                 <div className="input-group">
                   <label>New Password</label>
-                  <input
-                    type="password"
-                    name="newPassword"
-                    value={newPassword}
-                    onChange={handlePasswordChange}
-                  />
+                  <input type="password" name="newPassword" value={newPassword} onChange={handlePasswordChange} />
                 </div>
-                <button onClick={handlePasswordUpdate} className="update-password-btn">Update Password</button>
+                <button onClick={handlePasswordUpdate} className="update-password-btn">
+                  Update Password
+                </button>
               </div>
             </div>
           </div>
         )}
 
-        {activeTab === 'empty' && (
-          <div className="empty-tab">
-            Empty content for now
-          </div>
-        )}
+        {activeTab === 'empty' && <div className="empty-tab">Empty content for now</div>}
       </div>
     </div>
   );

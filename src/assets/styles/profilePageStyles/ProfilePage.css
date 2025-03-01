@@ -130,6 +130,22 @@
     padding: 20px;
     font-size: 16px;
   }
+
+  .save-profile-btn {
+    background-color: rgb(91, 91, 195);
+    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
+    margin-left: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .save-profile-btn:hover {
+    background-color: #45a049;
+  }
+  
   
   /* Mobile responsiveness */
   @media (max-width: 768px) {
