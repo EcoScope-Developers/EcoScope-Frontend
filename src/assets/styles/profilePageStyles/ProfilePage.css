@@ -26,6 +26,7 @@
   
   .tab {
     background-color: #f1f1f1;
+    color: black;
     border: 1px solid #ddd;
     padding: 10px 20px;
     margin: 0 10px;
@@ -37,6 +38,10 @@
   .tab.active {
     background-color: #007bff;
     color: white;
+  }
+
+  .tabs :hover{
+    background-color: #7ec485
   }
   
   .profile-details {
