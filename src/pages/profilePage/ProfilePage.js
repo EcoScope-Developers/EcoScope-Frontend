@@ -14,7 +14,8 @@ const ProfilePage = () => {
   });
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null); // To track selected image
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Loader state
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -51,10 +52,7 @@ const ProfilePage = () => {
       return;
     }
 
-    const requestBody = {
-      currentPassword,
-      newPassword
-    };
+    const requestBody = { currentPassword, newPassword };
 
     try {
       const response = await fetch(`https://ecoscope-backend.onrender.com/api/auth/update-password?userId=${userId}`, {
@@ -83,7 +81,7 @@ const ProfilePage = () => {
     fileInputRef.current.click();
   };
 
-  // Handle file selection and update preview
+  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -102,18 +100,30 @@ const ProfilePage = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append('avatar', fileInputRef.current.files[0]); // Append the file
+
+    setIsLoading(true); // Show loader
+
     try {
-      // Here, you would typically send the file to the server
-      // For demonstration, we assume success and update UI
-      setProfile(prevProfile => ({
-        ...prevProfile,
-        profilePicture: selectedImage
-      }));
-      setSelectedImage(null); // Reset selected image
-      toast.success("Profile picture updated successfully");
+      const response = await fetch(`http://localhost:8000/api/profile/update-avatar?userId=${userId}`, {
+        method: 'PUT',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Profile picture updated successfully");
+        window.location.reload(); // Refresh the page after successful update
+      } else {
+        toast.error(`Error: ${result.message}`);
+      }
     } catch (error) {
       console.error('Error updating profile picture:', error);
       toast.error('Failed to update profile picture');
+    } finally {
+      setIsLoading(false); // Hide loader
     }
   };
 
@@ -134,7 +144,11 @@ const ProfilePage = () => {
           <div className="profile-details">
             <div className="profile-left-section">
               <div className="profile-picture-wrapper">
-                <img src={selectedImage || profile.profilePicture} alt="Profile" className="profile-picture-square" />
+                {isLoading ? (
+                  <div className="loader"></div> // Show loader when uploading
+                ) : (
+                  <img src={selectedImage || profile.profilePicture} alt="Profile" className="profile-picture-square" />
+                )}
                 <button className="edit-icon-btn" onClick={handleEditClick}>
                   <FaPencilAlt />
                 </button>
