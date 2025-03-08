@@ -1,32 +1,50 @@
+/* ToolCard Styles */
 .toolCard {
-  background: rgba(255, 255, 255, 0.9); /* White card with slight transparency */
+  background-color: #f1f8e9;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 8px;
+  width: 100%; /* Make the width responsive */
+  max-width: 300px; /* Limit the maximum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  width: 250px;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+.toolCard:hover {
+  transform: translateY(-5px); /* Add hover effect for better interactivity */
 }
 
 .toolCard h3 {
-  color: #2E7D32; /* Dark green for headings */
-  font-weight: bold;
+  color: #2e7d32;
+  font-size: 1.2em; /* Increase font size for better readability */
 }
 
 .toolCard p {
-  color: #4A4A4A; /* Dark gray for text */
+  color: #6d6d6d;
+  margin: 10px 0;
+  font-size: 1em;
 }
 
 .viewButton {
-  background-color: #2E7D32; /* Green button */
+  padding: 8px 16px;
+  background-color: #2e7d32;
   color: white;
   border: none;
-  padding: 10px 15px;
-  /* width: 100%; */
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .viewButton:hover {
-  background-color: #1B5E20;
+  background-color: #1b5e20;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .toolCard {
+    width: 100%; /* Full width for smaller screens */
+    max-width: 90%; /* Limit the max-width to avoid overflow */
+    margin: 10px auto; /*Center the card on smaller screens*/
+  }
 }

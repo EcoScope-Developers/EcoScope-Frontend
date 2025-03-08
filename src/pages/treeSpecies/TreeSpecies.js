@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/styles/features/FeaturePages.css"
-import "../../assets/styles/results/TreeSpeciesIdentifier.css";
+import { FaCloudUploadAlt } from "react-icons/fa";
+import "../../assets/styles/results/TreeCount.css"; // Reusing the TreeCount styles for consistency
 
 const TreeSpeciesIdentifier = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    setSelectedImage(file);
-  };
+    if (!file) return;
 
-  const identifySpecies = async () => {
-    if (!selectedImage) {
-      alert("Please upload an image first.");
-      return;
-    }
+    setSelectedImage(URL.createObjectURL(file)); // Show preview before upload
 
     const formData = new FormData();
-    formData.append("image", selectedImage);
+    formData.append("image", file);
 
     try {
       const response = await fetch("http://127.0.0.1:5000/identify-tree-species", {
@@ -28,29 +23,41 @@ const TreeSpeciesIdentifier = () => {
       });
 
       const data = await response.json();
-
-      if (data.species) {
+      if (response.ok) {
         navigate("/tree-species-result", {
-          state: { imageUrl: URL.createObjectURL(selectedImage), species: data.species },
+          state: { imageUrl: URL.createObjectURL(file), species: data.species },
         });
       } else {
-        alert("No species identified.");
+        alert(`Error: ${data.error || "Failed to identify species."}`);
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to connect to server.");
+      console.error("Fetch error:", error);
+      alert("Failed to connect to the server.");
     }
   };
 
   return (
-    <div className="feature-container fade-in">
-      <h1 className="feature-title">Tree Species Identifier</h1>
-      <p className="feature-description">Upload an image to identify tree species.</p>
+    <div className="tree-count-container fade-in"> {/* Reusing the existing container */}
+      <div className="tree-count-card"> {/* Keeping card styles consistent */}
+        <h1 className="feature-title">Tree Species Identifier</h1>
+        <p className="feature-description">Upload an image to identify tree species.</p>
 
-      <input type="file" accept="image/*" onChange={handleFileChange} className="upload-input" />
-      {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="preview-image" />}
-      
-      <button className="upload-button" onClick={identifySpecies}>Identify Species</button>
+        {/* Upload Section */}
+        <div className="upload-box">
+          <input type="file" id="file-upload" accept="image/*" onChange={handleFileChange} hidden />
+          <label htmlFor="file-upload" className="upload-label">
+            <FaCloudUploadAlt size={40} />
+            <span>Click to Upload Image</span>
+          </label>
+        </div>
+
+        {/* Show preview if an image is selected */}
+        {selectedImage && (
+          <div className="preview-section">
+            <img src={selectedImage} alt="Preview" className="preview-image" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
