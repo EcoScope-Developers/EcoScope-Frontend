@@ -137,6 +137,7 @@ function LoginSignup() {
       if (response.ok) {
         localStorage.setItem('userId', userId);
         localStorage.setItem('accessToken', data.tokens.accessToken);
+        localStorage.setItem('refreshToken', data.tokens.refreshToken);
         toast.success(data.message || 'Login successful!');
         // Clear form fields
         setFormData({

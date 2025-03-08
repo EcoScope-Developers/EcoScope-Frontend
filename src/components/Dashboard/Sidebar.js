@@ -23,6 +23,8 @@ const Sidebar = () => {
         <ul>
           {[ 
             { icon: "🏠", label: "Home", to: "/home" },
+            { icon: "👤", label: "Profile", to: "/profile" },
+            { icon: "💸", label: "Pricing Plans", to: "/plans" }, 
             { icon: "🌳", label: "Tree Count", to: "/tree-count" },
             { icon: "📊", label: "Green Cover", to: "/green-cover" },
             { icon: "🧬", label: "Species", to: "/tree-species" },

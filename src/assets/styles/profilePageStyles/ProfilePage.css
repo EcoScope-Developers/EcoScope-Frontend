@@ -1,0 +1,187 @@
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .profile-container h1 {
+    text-align: center;
+  }
+  
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .tab.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .profile-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-left-section, .profile-right-section {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .profile-right-section {
+    margin-top: 5rem;
+  }
+  
+  .profile-picture-wrapper {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .profile-picture-square {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    object-fit: cover;
+  }
+  
+  .edit-icon-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .password-update-section {
+    margin-top: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+  }
+  
+  .input-group input:disabled {
+    cursor: not-allowed;
+    background-color: #e9ecef;
+  }
+  
+  .update-password-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .update-password-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .empty-tab {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .save-profile-btn {
+    background-color: rgb(91, 91, 195);
+    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
+    margin-left: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .save-profile-btn:hover {
+    background-color: #45a049;
+  }
+
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .profile-card {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profile-left-section, .profile-right-section {
+      margin: 0;
+      width: 100%;
+    }
+  
+    .profile-details {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profile-right-section {
+      margin-top: 20px; /* Adds spacing between left and right sections on mobile */
+    }
+  }
+  

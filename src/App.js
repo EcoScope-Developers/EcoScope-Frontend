@@ -13,6 +13,7 @@ import HelpPage from './pages/helppage/HelpPage';
 import Header from './components/Header/Header';
 import Dashboard from './pages/dashboard/Dashbord';
 import PricingPlans from './pages/pricingPlansPage/PricingPlans';
+import ProfilePage from './pages/profilePage/ProfilePage'
 import NotFoundPage from './pages/errorPage/NotFoundPage';
 import GreenCover from './pages/greencover/greencover.js';
 import TreeCount from './pages/treecount/treecount.js';
@@ -32,7 +33,7 @@ function Layout() {
   const location = useLocation();
 
   // Hide Header and Footer for "/" and "/login"
-  const showHeaderFooter = location.pathname === '/home' || location.pathname === '/about' || location.pathname === '/help' || location.pathname === '/plans' || location.pathname === '/test';
+  const showHeaderFooter = location.pathname === '/home' || location.pathname === '/about' || location.pathname === '/help' || location.pathname === '/plans' || location.pathname === '/profile' || location.pathname === '/test';
 
   return (
     <>
@@ -61,6 +62,8 @@ function Layout() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/help" element={<HelpPage />} />
         <Route path="/plans" element={<PricingPlans />} />
+        <Route path="/profile" element={<ProfilePage />} />
+
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
