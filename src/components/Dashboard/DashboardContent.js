@@ -1,40 +1,18 @@
-import React from "react";
-import "../../assets/styles/dashboard/Dashboard.css";
+import React from 'react'
+import ToolCard from '../../components/Dashboard/Toolcard';
 
-const DashboardContent = ({ navigate }) => {  // ✅ Accept navigate prop
-  return (
-    <div className="dashboard-content">
-      <div className="feature-card">
-        <h2>Tree Count</h2>
-        <p>Accurately count trees in designated areas</p>
-        <button onClick={() => navigate("/tree-count")}>View</button>
-      </div>
+const DashboardContent = () => {
+    return (
+        <div className="dashboard-content">
+            <div className="toolCards">
+                <ToolCard title="Tree Count" description="Accurately count trees in designated areas" link="/tree-count" />
+                <ToolCard title="Green Cover Estimator" description="Estimate the green cover percentage" link="/green-cover"/>
+                <ToolCard title="Tree Species Identifier" description="Identify different tree species" link="/tree-species"/>
+                <ToolCard title="Optimal Pathing" description="Compute optimal path within the area" link="/optimal-path"/>
+                <ToolCard title="Historical Data" description="Access historical data for analysis" link="/historical-data"/>
+            </div>
+        </div>
+    )
+}
 
-      <div className="feature-card">
-        <h2>Green Cover Estimator</h2>
-        <p>Estimate the green cover percentage</p>
-        <button onClick={() => navigate("/green-cover")}>View</button>
-      </div>
-
-      <div className="feature-card">
-        <h2>Tree Species Identifier</h2>
-        <p>Identify different tree species</p>
-        <button onClick={() => navigate("/tree-species")}>View</button>
-      </div>
-
-      <div className="feature-card">
-        <h2>Optimal Pathing</h2>
-        <p>Compute optimal path within the area</p>
-        <button onClick={() => navigate("/optimal-path")}>View</button>
-      </div>
-
-      <div className="feature-card">
-        <h2>Historical Data</h2>
-        <p>Access historical data for analysis</p>
-        <button onClick={() => navigate("/historical-data")}>View</button>
-      </div>
-    </div>
-  );
-};
-
-export default DashboardContent;
+export default DashboardContent
