@@ -17,7 +17,7 @@ const WeatherForm = ({ setWeatherData }) => {
     setLoading(true); // Show Loader
 
     try {
-      const response = await fetch("http://localhost:8000/api/weather/fetch-weather", {
+      const response = await fetch("https://ecoscope-backend.onrender.com/api/weather/fetch-weather", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ city, startDate, endDate }),
