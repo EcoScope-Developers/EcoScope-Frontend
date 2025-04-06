@@ -8,12 +8,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [userDetails, setUserDetails] = useState({
-    username: '',  
-    avatar: defaultAvatar, 
+    username: '',
+    avatar: defaultAvatar,
   });
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
-  const [isNavbarExpanded, setIsNavbarExpanded] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isNavbarExpanded, setIsNavbarExpanded] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // New state for dropdown
   const navigate = useNavigate();
 
@@ -27,8 +27,12 @@ const Header = () => {
           if (data.user) {
             setUserDetails({
               username: data.user.username,
-              avatar: data.user.avatar || defaultAvatar, 
+              avatar: data.user.avatar || defaultAvatar,
             });
+            // ✅ Save planName in localStorage
+            if (data.user.plan) {
+              localStorage.setItem('planName', data.user.plan);
+            }
           }
         })
         .catch(error => console.error("Error fetching user details:", error));
@@ -41,6 +45,7 @@ const Header = () => {
       localStorage.removeItem('userId');
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
+      localStorage.removeItem('planName');
       setIsLoggedIn(false);
       toast.success("Logged out successfully.", {
         toastId: 'logout-toast',
@@ -51,7 +56,7 @@ const Header = () => {
       }, 3000);
     }
   };
-  
+
 
 
 

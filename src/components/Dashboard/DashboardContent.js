@@ -10,6 +10,7 @@ const DashboardContent = () => {
                 <ToolCard title="Tree Species Identifier" description="Identify different tree species" link="/tree-species"/>
                 <ToolCard title="Optimal Pathing" description="Compute optimal path within the area" link="/optimal-path"/>
                 <ToolCard title="Historical Data" description="Access historical data for analysis" link="/historical-data"/>
+                <ToolCard title="Current Weather" description="Access current weather information" link="https://present-weather-info.netlify.app"/>
             </div>
         </div>
     )

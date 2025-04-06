@@ -105,7 +105,9 @@ const PricingPlans = () => {
             });
 
             if (downgradeResponse.ok) {
+              localStorage.setItem("userPlan", plan.name); // ⬅️ update localStorage
               alert('Your plan has been downgraded to the Smart Plan.');
+              window.location.reload();
             } else {
               const errorData = await downgradeResponse.json();
               alert(`Failed to downgrade plan: ${errorData.error || 'Unknown error'}`);
@@ -152,7 +154,9 @@ const PricingPlans = () => {
               }),
               credentials: 'include',
             });
+            localStorage.setItem("userPlan", plan.name); // ⬅️ update localStorage
             alert(`Payment successful! Your plan has been updated to ${plan.name} plan.`);
+            window.location.reload();
           },
           prefill: {
             name: 'John Doe',

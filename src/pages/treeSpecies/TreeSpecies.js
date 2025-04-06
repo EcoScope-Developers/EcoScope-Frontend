@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import "../../assets/styles/results/TreeCount.css"; // Reusing the TreeCount styles for consistency
@@ -36,9 +36,23 @@ const TreeSpeciesIdentifier = () => {
     }
   };
 
+  const planName = localStorage.getItem("planName");
+
+  if (!planName || planName.trim().toLowerCase() === "smart") {
+    return (
+      <div className="tree-count-container fade-in">
+        <div className="tree-count-card">
+          <h1 className="feature-title">Tree Species Identifier</h1>
+          <p className="feature-description">🚫 You need to upgrade to the <strong>Pro or Premium Plan</strong> to use this feature.</p>
+        </div>
+      </div>
+    );
+  }
+
+
   return (
-    <div className="tree-count-container fade-in"> {/* Reusing the existing container */}
-      <div className="tree-count-card"> {/* Keeping card styles consistent */}
+    <div className="tree-count-container fade-in">
+      <div className="tree-count-card">
         <h1 className="feature-title">Tree Species Identifier</h1>
         <p className="feature-description">Upload an image to identify tree species.</p>
 

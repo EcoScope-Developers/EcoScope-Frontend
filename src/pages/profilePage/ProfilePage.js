@@ -30,6 +30,8 @@ const ProfilePage = () => {
             email: data.user.email,
             planName: data.user.plan,
           });
+
+          localStorage.setItem('planName', data.user.plan);
         })
         .catch(error => {
           console.error('Error fetching user details:', error);

@@ -38,6 +38,19 @@ const OptimalPath = () => {
     }
   };
 
+  const planName = localStorage.getItem("planName");
+
+  if (!planName || planName.trim().toLowerCase() === "smart") {
+    return (
+      <div className="tree-count-container fade-in">
+        <div className="tree-count-card">
+          <h1 className="feature-title">Tree Species Identifier</h1>
+          <p className="feature-description">🚫 You need to upgrade to the <strong>Pro or Premium Plan</strong> to use this feature.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="optimal-path-container fade-in">
       <div className="optimal-path-card">
