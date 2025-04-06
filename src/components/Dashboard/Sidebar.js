@@ -30,7 +30,6 @@ const Sidebar = () => {
             { icon: "🧬", label: "Species", to: "/tree-species" },
             { icon: "🛣️", label: "Optimal Path", to: "/optimal-path" },
             { icon: "🌦️", label: "Historical Data", to: "/historical-data" },
-            { icon: "💸", label: "Pricing Plans", to: "/plans" }, 
             {/* { icon: "🛠️", label: "Tools", to: "/tools" }, */},
             {/* { icon: "📜", label: "History", to: "/history" }, */},
           ].map((item) => (
