@@ -18,7 +18,7 @@ const GreenCover = () => {
     formData.append("image", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/process-green-cover", {
+      const response = await fetch("https://ecoscope-ml.onrender.com/process-green-cover", {
         method: "POST",
         body: formData,
       });

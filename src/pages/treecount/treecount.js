@@ -17,7 +17,7 @@ const TreeCount = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/detect_trees", {
+      const response = await fetch("https://ecoscope-ml.onrender.com/detect_trees", {
         method: "POST",
         body: formData,
       });
