@@ -21,7 +21,7 @@ const OptimalPath = () => {
     formData.append("image", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/compute_optimal_path", {
+      const response = await fetch("https://ecoscope-ml.onrender.com/compute_optimal_path", {
         method: "POST",
         body: formData,
       });
