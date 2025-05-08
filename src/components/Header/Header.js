@@ -83,9 +83,9 @@ const Header = () => {
           <div className="navbar-nav">
             <a className="nav-item nav-link active" href="/home">Home</a>
             <a className="nav-item nav-link" href="#">Features</a>
-            <a className="nav-item nav-link" href="#">Gallery</a>
+            
             <a className="nav-item nav-link" href="/about">About Us</a>
-            <a className="nav-item nav-link" href="#">Contact</a>
+           
             <a className="nav-item nav-link" href="/help">Help</a>
           </div>
           <div className="ml-auto user-section">
