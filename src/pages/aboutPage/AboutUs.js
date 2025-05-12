@@ -9,7 +9,7 @@ import tanishk from "../../assets/images/team/tanishk.jpeg"
 
 // Mock data for team members
 const teamMembers = [
-  { name: 'Tarun Agrawal djfa', role: 'Fullstack Developer', image: tarun },
+  { name: 'Tarun Agrawal', role: 'Fullstack Developer', image: tarun },
   { name: 'Tushar kumar sahu', role: 'Fullstack Developer', image: tushar },
   { name: 'Shreya Gupta', role: 'Machine learning Developer', image: shreya },
   { name: 'Tanishk Gupta', role: 'Data Analyst', image: tanishk },
